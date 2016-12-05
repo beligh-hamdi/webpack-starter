@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "noEmitHelpers": true,
+        "strictNullChecks": false,
+        "moduleResolution": "node"
+    },
+    "lib": [
+        "dom",
+        "es6"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ],
+    "awesomeTypescriptLoaderOptions": {
+        "forkChecker": true,
+        "useWebpackText": true
+    }
+}
