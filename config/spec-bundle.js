@@ -1,4 +1,4 @@
-require('angular');
+require('angular')
 require('angular-mocks');
 
 var testsContext = require.context('../src', true, /\.spec\.ts/);

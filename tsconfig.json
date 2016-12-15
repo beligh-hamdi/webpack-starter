@@ -1,12 +1,21 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
         "target": "es5",
+        "module": "commonjs",
         "noImplicitAny": false,
         "sourceMap": true,
         "noEmitHelpers": true,
         "strictNullChecks": false,
-        "moduleResolution": "node"
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": false
     },
     "lib": [
         "dom",
@@ -15,9 +24,5 @@
     "exclude": [
         "node_modules",
         "dist"
-    ],
-    "awesomeTypescriptLoaderOptions": {
-        "forkChecker": true,
-        "useWebpackText": true
-    }
+    ]
 }

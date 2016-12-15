@@ -1,5 +1,6 @@
 import {expect} from 'chai';
 import Home from  './home';
+import * as angular from 'angular';
 
 describe('Home', () => {
 
@@ -8,13 +9,13 @@ describe('Home', () => {
     let $location: ng.ILocationService;
     let $state: ng.ui.IStateService;
 
-    beforeEach(window['module'](Home));
+    beforeEach(angular.mock.module(Home));
 
-    beforeEach(inject(($injector) => {
-        $componentController = $injector.get('$componentController');
+    beforeEach(inject(($injector: ng.auto.IInjectorService) => {
+        $componentController = $injector.get<ng.IComponentControllerService>('$componentController');
         $rootScope = $injector.get('$rootScope');
         $location = $injector.get('$location');
-        $state = $injector.get('$state');
+        $state = $injector.get<ng.ui.IStateService>('$state');
     }));
     
     it('should be exist.', () => {
