@@ -7,7 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const METADATA = {
     title: 'Webpack learning',
-    baseUrl: '/'
+    baseUrl: '/',
+    isDevServer: helpers.isWebpackDevServer()
 }
 
 module.exports = function (options) {
@@ -60,7 +61,9 @@ module.exports = function (options) {
         },
 
         plugins: [
+
             new ExtractTextPlugin('css/style.css'),
+            
             new HtmlWebpackPlugin({
                 template: './src/index.html',
                 title: METADATA.title,
@@ -68,6 +71,7 @@ module.exports = function (options) {
                 chunksSortMode: 'dependency',
                 inject: 'body'
             })
+
         ],
 
         node: {
