@@ -11,7 +11,11 @@ module.exports = function (options) {
     return {
 
         devtool: 'inline-source-map',
-
+        
+        performance: {
+            hints: false
+        },
+        
         resolve: {
             extensions: ['.ts', '.js'],
             /** 
