@@ -1,4 +1,4 @@
-const helper = require('./helpers');
+const helpers = require('./helperss');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -14,7 +14,7 @@ module.exports = function (options) {
         devtool: 'cheap-module-source-map',
 
         output: {
-            path: helper.root('dist'),
+            path: helpers.root('dist'),
             filename: 'js/[name].js'
         },
 

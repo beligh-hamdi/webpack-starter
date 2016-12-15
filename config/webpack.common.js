@@ -49,7 +49,7 @@ module.exports = function (options) {
                     use: {
                         loader: 'url-loader',
                         query: {
-                            limit: 25000,
+                            limit: 100000,
                             name: 'images/[hash].[ext]',
                             publicPath: '../'
                         }

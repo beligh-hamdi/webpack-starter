@@ -23,22 +23,13 @@ module.exports = function (options) {
         module: {
             rules: [
                 {
-                    enforce: 'pre',
-                    test: /\.js$/,
-                    use: 'source-map-loader'
-                },
-                {
                     test: /\.ts$/,
                     use: {
-                            loader: 'awesome-typescript-loader',
-                            query: {
-                            // use inline sourcemaps for "karma-remap-coverage" reporter
-                            sourceMap: false,
-                            inlineSourceMap: true,
+                        loader: 'ts-loader',
+                        query: {
                             compilerOptions: {
-                              // Remove TypeScript helpers to be injected
-                              // below by DefinePlugin
-                              removeComments: true
+                                sourceMap: false,
+                                inlineSourceMap: true
                             }
                         }
                     },
@@ -51,16 +42,23 @@ module.exports = function (options) {
                 },
                 { 
                     test: /\.scss$/,
-                    use: [
-                        ExtractTextPlugin.extract('style-loader'),
-                        'css-loader',
-                        'sass-loader'
-                    ]
+                    use: ['style-loader', 'css-loader', 'sass-loader']
                 },
                 {
                     test: /\.html$/,
-                    use: 'ng-cache-loader?module=app.templates',
+                    use: ['ng-cache-loader?module=app.templates'],
                     exclude: [helpers.root('src/index.html')]
+                },
+                {
+                    test: /\.(jpg|png|gif)$/,
+                    use: {
+                        loader: 'url-loader',
+                        query: {
+                            limit: 100000,
+                            name: 'images/[hash].[ext]',
+                            publicPath: '../'
+                        }
+                    }
                 },
                 {
                     enforce: 'post',
