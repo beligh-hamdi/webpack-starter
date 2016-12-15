@@ -25,7 +25,8 @@ module.exports = function (options) {
             rules: [
                 {
                     test: /\.ts$/,
-                    use: ['awesome-typescript-loader']
+                    use: 'ts-loader',
+                    exclude: [/\.(spec|e2e)\.ts$/]
                 },
                 { 
                     test: /\.scss$/,

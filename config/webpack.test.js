@@ -27,6 +27,12 @@ module.exports = function (options) {
         module: {
             rules: [
                 {
+                    enforce: 'pre',
+                    test: /\.ts?$/,
+                    use: 'tslint-loader',
+                    exclude: /(node_modules)/,
+                },
+                {
                     test: /\.ts$/,
                     use: {
                         loader: 'ts-loader',
@@ -50,7 +56,7 @@ module.exports = function (options) {
                 },
                 {
                     test: /\.html$/,
-                    use: ['ng-cache-loader?module=app.templates'],
+                    use: ['ng-cache-loader'],
                     exclude: [helpers.root('src/index.html')]
                 },
                 {
@@ -80,7 +86,15 @@ module.exports = function (options) {
         plugins: [
             new LoaderOptionsPlugin({
                 debug: true,
-                options: {}
+                options: {
+                    'ng-cache-loader': {
+                        module: 'app.templates'
+                    },
+                    tslint: {
+                        emitErrors: true,
+                        // failOnHint: true
+                    }
+                }
             })
         ],
 

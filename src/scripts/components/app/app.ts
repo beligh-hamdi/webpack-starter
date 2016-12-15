@@ -1,7 +1,7 @@
 import '../../../assets/sass/main.scss';
 import './app.html';
 
-let App:ng.IComponentOptions = {
+let App: ng.IComponentOptions = {
     templateUrl: 'app.html'
 };
 

@@ -9,5 +9,5 @@ let home = angular
     .component('home', HomeComponent)
     .config(HomeRoute)
     .name;
-    
+
 export default home;

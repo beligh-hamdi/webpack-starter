@@ -5,6 +5,6 @@ export default function (
     $urlRouterProvider.otherwise('/');
     $stateProvider.state('home', {
         url: '/',
-        component: 'home'
+        template: '<home></home>'
     });
 }
