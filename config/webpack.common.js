@@ -28,7 +28,7 @@ module.exports = function (options) {
             rules: [
                 {
                     test: /\.ts$/,
-                    use: 'ts-loader',
+                    use: ['ng-annotate-loader', 'ts-loader'],
                     exclude: [/\.(spec|e2e)\.ts$/]
                 },
                 { 
@@ -76,6 +76,11 @@ module.exports = function (options) {
                         ) === 0
                     )
                 }
+            }),
+
+            new CommonsChunkPlugin({
+                name: 'manifest',
+                chunks: ['vendor']
             }),
 
             new ExtractTextPlugin('css/style.css'),
