@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const helpers = require('./helpers');
 
 // Webpack Plugins
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -62,6 +64,20 @@ module.exports = function (options) {
 
         plugins: [
 
+            new CommonsChunkPlugin({
+                name: 'vendor',
+                minChunks: function (module, count) {
+                    // any required modules inside node_modules are extracted to vendor
+                    return (
+                        module.resource &&
+                        /\.js$/.test(module.resource) &&
+                        module.resource.indexOf(
+                            helpers.root('node_modules')
+                        ) === 0
+                    )
+                }
+            }),
+
             new ExtractTextPlugin('css/style.css'),
             
             new HtmlWebpackPlugin({
@@ -71,7 +87,7 @@ module.exports = function (options) {
                 metadata: METADATA,
                 chunksSortMode: 'dependency',
                 inject: 'body'
-            })
+            }),
 
         ],
 
