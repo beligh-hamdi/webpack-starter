@@ -13,9 +13,9 @@ const METADATA = {
 
 module.exports = function (options) {
     return {
-        entry: [
-            './src/scripts/main.ts'
-        ],
+        entry: {
+            main: './src/scripts/main.ts'
+        },
 
         resolve: {
             extensions: ['.ts', '.js', '.json'],
@@ -65,6 +65,7 @@ module.exports = function (options) {
             new ExtractTextPlugin('css/style.css'),
             
             new HtmlWebpackPlugin({
+                filename: 'index.html',
                 template: './src/index.html',
                 title: METADATA.title,
                 metadata: METADATA,

@@ -6,8 +6,8 @@
   "scripts": {
     "build": "rimraf ./dist && webpack --config config/webpack.dev.js",
     "lint": "tslint \"src/**/*.ts\"",
-    "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/ --inline --hot",
-    "serve": "npm run server:dev",
+    "server:dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "serve": "npm run server:dev -- --progress --watch --inline --hot",
     "test": "rimraf ./coverage && karma start",
     "test:watch": "npm run test -- --auto-watch --no-single-run"
   },

@@ -4,7 +4,6 @@ const common = require('./webpack.common.js');
 
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HMR = helpers.hasProcessFlag('hot');
@@ -22,6 +21,7 @@ module.exports = function (options) {
 
         output: {
             path: helpers.root('dist'),
+            publicPath: '/',
             filename: 'js/[name].js'
         },
 
@@ -36,8 +36,6 @@ module.exports = function (options) {
                 }
             }),
 
-            new HotModuleReplacementPlugin(),
-
             new LoaderOptionsPlugin({
                 debug: true,
                 options: {}
@@ -47,7 +45,6 @@ module.exports = function (options) {
         devServer: {
             port: METADATA.port,
             host: METADATA.host,
-            hot: METADATA.HMR,
             historyApiFallback: true,
             watchOptions: {
                 aggregateTimeout: 300,
