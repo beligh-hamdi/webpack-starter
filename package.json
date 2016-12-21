@@ -21,6 +21,7 @@
     "@types/angular-ui-router": "^1.1.35",
     "@types/chai": "^3.4.34",
     "@types/es6-promise": "^0.0.32",
+    "@types/mocha": "^2.2.34",
     "@types/node": "^0.0.2",
     "@types/webpack": "^2.0.0",
     "angular": "^1.5.9",
