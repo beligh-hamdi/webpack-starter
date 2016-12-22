@@ -1,8 +1,9 @@
-import '../../../assets/sass/main.scss';
-import './app.html';
+import * as angular from 'angular';
+import AppComponent from './app.component';
 
-let App: ng.IComponentOptions = {
-    templateUrl: 'app.html'
-};
+let app = angular
+    .module('app.root', [])
+    .component('app', AppComponent)
+    .name;
 
-export default App;
+export default app;
