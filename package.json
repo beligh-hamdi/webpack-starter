@@ -10,7 +10,7 @@
     "server:prod": "cross-env NODE_ENV=production webpack-dev-server",
     "serve": "npm run server:dev -- --progress --watch --inline --hot",
     "test": "rimraf ./coverage && karma start",
-    "test:watch": "npm run test -- --auto-watch --no-single-run"
+    "tdd": "npm run test -- --auto-watch --no-single-run"
   },
   "keywords": [],
   "author": "",
