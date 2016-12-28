@@ -8,4 +8,4 @@ angular.module('app', [
     'app.configs',
     'app.components',
     'app.templates'
-]); 
+]);

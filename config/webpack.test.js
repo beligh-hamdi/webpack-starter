@@ -8,6 +8,7 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
 module.exports = function (options) {
+
     return {
 
         devtool: 'inline-source-map',
@@ -92,7 +93,6 @@ module.exports = function (options) {
                     },
                     tslint: {
                         emitErrors: true,
-                        // failOnHint: true
                     }
                 }
             })

@@ -14,9 +14,16 @@ const METADATA = {
 }
 
 module.exports = function (options) {
+
+    let isProd = options.env === 'production';
+
     return {
         entry: {
             main: './src/scripts/main.ts'
+        },
+
+        performance: {
+            hints: isProd ? true : false
         },
 
         resolve: {
@@ -26,6 +33,12 @@ module.exports = function (options) {
 
         module: {
             rules: [
+                {
+                    enforce: 'pre',
+                    test: /\.ts?$/,
+                    use: 'tslint-loader',
+                    exclude: /(node_modules)/,
+                },
                 {
                     test: /\.ts$/,
                     use: ['ng-annotate-loader', 'ts-loader'],
@@ -94,6 +107,18 @@ module.exports = function (options) {
                 inject: 'body'
             }),
 
+            new LoaderOptionsPlugin({
+                debug: isProd ? false : true,
+                options: {
+                    'ng-cache-loader': {
+                        module: 'app.templates'
+                    },
+                    tslint: {
+                        emitErrors: true,
+                        failOnHint: isProd ? true : false
+                    }
+                }
+            })
         ],
 
         node: {
