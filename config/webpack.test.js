@@ -2,6 +2,7 @@ const path = require('path');
 const helpers = require('./helpers');
 
 // Webpack Plugins
+const WebpackNotifierPlugin = require('webpack-notifier');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 
@@ -11,7 +12,7 @@ module.exports = function (options) {
 
     return {
 
-        devtool: 'inline-source-map',
+        devtool: '#inline-source-map',
         
         performance: {
             hints: false
@@ -85,6 +86,7 @@ module.exports = function (options) {
         },
 
         plugins: [
+
             new LoaderOptionsPlugin({
                 debug: true,
                 options: {
@@ -95,7 +97,9 @@ module.exports = function (options) {
                         emitErrors: true,
                     }
                 }
-            })
+            }),
+
+            new WebpackNotifierPlugin()
         ],
 
         node: {

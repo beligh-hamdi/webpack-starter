@@ -17,7 +17,7 @@ module.exports = function(config) {
             html: './coverage/html'
         },
         webpackMiddleware: {stats: 'errors-only', noInfo: true},
-        reporters: ['mocha', 'coverage', 'remap-coverage'],
+        reporters: ['mocha', 'coverage', 'remap-coverage', 'growl'],
         port: 9876,
         color: true,
         logLevel: config.LOG_INFO,
